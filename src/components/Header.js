@@ -47,14 +47,14 @@ const Header = () => {
                             Home
                         </a>
                         <a
-                            href="#post-job"
+                            href="/job-description"
                             className="text-gray-600 hover:text-purple-700">
                             Post a Job
                         </a>
                         <a
-                            href="#find-cv"
+                            href="/"
                             className="text-gray-600 hover:text-purple-700">
-                            Find CVs
+                            Jobseeker
                         </a>
                     </nav>
 
