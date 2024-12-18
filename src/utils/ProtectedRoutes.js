@@ -14,7 +14,7 @@ export default function ProtectedRoute(props) {
     }, []);
 
     if (!islogedin) {
-        return <Navigate to="/login"></Navigate>;
+        return <Navigate to="/recruiters/login"></Navigate>;
     } else {
         return (
             <div>

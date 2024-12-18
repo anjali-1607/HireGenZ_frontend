@@ -33,7 +33,7 @@ const RecruitersSection = () => {
                         candidates in no time.
                     </p>
                     <button
-                        onClick={() => navigate("/post-job")}
+                        onClick={() => navigate("/recruiters")}
                         className="text-purple-600 font-medium hover:underline">
                         Post a Job
                     </button>

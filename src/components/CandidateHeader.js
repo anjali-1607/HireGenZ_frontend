@@ -1,22 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/hiregenzo-logo-final.png";
 
 const CandidateHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
+    const [isScrolled, setIsScrolled] = useState(false); // State to track if the header should have a white background
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    // Handle scroll to toggle header background
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <header className="relative bg-white shadow-lg">
+        <header
+            className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${
+                isScrolled ? "bg-white shadow-lg" : "bg-transparent"
+            }`}>
             {/* Desktop Header */}
             <div className="flex items-center justify-between px-8 py-4">
                 {/* Logo */}
                 <Link to="/">
-                    <img src={logo} alt="HireGeni Logo" className="h-6" />
+                    <img src={logo} alt="HireGeni Logo" className="h-8" />
                 </Link>
+                {/* <h2 className="text-xl font-bold text-gray-800">HIREGENZO</h2> */}
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex gap-6">
@@ -43,8 +64,8 @@ const CandidateHeader = () => {
                 </nav>
 
                 {/* Login Button */}
-                <button className="hidden md:block px-6 py-2 bg-purple-700 text-white rounded-lg font-medium">
-                    Login
+                <button className="hidden md:block px-6 py-2 bg-purple-700 text-white rounded-lg font-medium ">
+                    Upload
                 </button>
 
                 {/* Mobile Hamburger Menu */}
@@ -98,7 +119,7 @@ const CandidateHeader = () => {
                         <button
                             className="px-6 py-2 bg-purple-700 text-white rounded-lg font-medium"
                             onClick={toggleMenu}>
-                            Login
+                            Upload
                         </button>
                     </nav>
                 </div>

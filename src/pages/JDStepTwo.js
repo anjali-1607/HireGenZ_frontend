@@ -13,7 +13,7 @@ const JDTwo = () => {
     };
 
     const handleBack = () => {
-        navigate("/job-description"); // Navigate back to the first page
+        navigate("/recruiters"); // Navigate back to the first page
     };
 
     return (

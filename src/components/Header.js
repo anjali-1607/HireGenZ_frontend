@@ -1,35 +1,38 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png"; // Adjust the path based on your folder structure
+import logo from "../assets/hiregenzo-logo-final.png"; // Adjust the path based on your folder structure
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
-    const [isRegistrationPopupOpen, setIsRegistrationPopupOpen] =
-        useState(false);
+    // const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+    // const [isRegistrationPopupOpen, setIsRegistrationPopupOpen] =
+    //     useState(false);
+
+    const navigate = useNavigate();
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    const toggleLoginPopup = () => {
-        setIsLoginPopupOpen(!isLoginPopupOpen);
-    };
+    // const toggleLoginPopup = () => {
+    //     setIsLoginPopupOpen(!isLoginPopupOpen);
+    // };
 
-    const toggleRegistrationPopup = () => {
-        setIsRegistrationPopupOpen(!isRegistrationPopupOpen);
-    };
+    // const toggleRegistrationPopup = () => {
+    //     setIsRegistrationPopupOpen(!isRegistrationPopupOpen);
+    // };
 
-    const handleSendOtp = (e) => {
-        e.preventDefault();
-        alert("OTP Sent to your email!");
-        setIsLoginPopupOpen(false); // Close login popup after sending OTP
-    };
+    // const handleSendOtp = (e) => {
+    //     e.preventDefault();
+    //     alert("OTP Sent to your email!");
+    //     setIsLoginPopupOpen(false); // Close login popup after sending OTP
+    // };
 
-    const handleRegister = (e) => {
-        e.preventDefault();
-        alert("Registration Successful!");
-        setIsRegistrationPopupOpen(false); // Close registration popup after submission
-    };
+    // const handleRegister = (e) => {
+    //     e.preventDefault();
+    //     alert("Registration Successful!");
+    //     setIsRegistrationPopupOpen(false); // Close registration popup after submission
+    // };
 
     return (
         <>
@@ -37,17 +40,20 @@ const Header = () => {
             <header className="sticky top-0 z-50 bg-white shadow-md">
                 <div className="flex justify-between items-center px-8 py-4">
                     {/* Logo */}
-                    <img src={logo} alt="HireGeni Logo" className="h-6" />
+                    {/* <img src={logo} alt="HireGeni Logo" className="h-6" /> */}
+                    <Link to="/recruiters">
+                        <img src={logo} alt="HireGeni Logo" className="h-8" />
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex gap-4">
                         <a
-                            href="/post-job"
+                            href="/recruiters"
                             className="text-gray-600 hover:text-purple-700">
                             Home
                         </a>
                         <a
-                            href="/job-description"
+                            href="job-description"
                             className="text-gray-600 hover:text-purple-700">
                             Post a Job
                         </a>
@@ -61,7 +67,7 @@ const Header = () => {
                     {/* Desktop Login Button */}
                     <button
                         className="hidden md:block px-4 py-2 bg-purple-700 text-white rounded-lg"
-                        onClick={toggleLoginPopup}>
+                        onClick={() => navigate("/recruiters/login")}>
                         Login
                     </button>
 
@@ -90,7 +96,7 @@ const Header = () => {
                     <div className="absolute top-16 left-0 w-full bg-white shadow-md md:hidden">
                         <nav className="flex flex-col items-center gap-4 py-4">
                             <a
-                                href="#post-job"
+                                href="/recruiters"
                                 className="text-gray-600 hover:text-purple-700"
                                 onClick={() => setIsMenuOpen(false)}>
                                 Post a Job
@@ -104,8 +110,7 @@ const Header = () => {
                             <button
                                 className="px-4 py-2 bg-purple-700 text-white rounded-lg"
                                 onClick={() => {
-                                    setIsMenuOpen(false);
-                                    toggleLoginPopup();
+                                    navigate("/recruiters/login");
                                 }}>
                                 Login
                             </button>
@@ -115,7 +120,7 @@ const Header = () => {
             </header>
 
             {/* Login Popup */}
-            {isLoginPopupOpen && (
+            {/* {isLoginPopupOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-sm relative">
                         <h2 className="text-xl font-bold text-gray-800 mb-4">
@@ -125,7 +130,7 @@ const Header = () => {
                             Please enter your email address to receive an OTP.
                         </p>
                         <form onSubmit={handleSendOtp}>
-                            {/* Email Address */}
+                           
                             <div className="mb-4">
                                 <label
                                     htmlFor="email"
@@ -142,7 +147,7 @@ const Header = () => {
                                     placeholder="Enter your email address"
                                 />
                             </div>
-                            {/* Send OTP Button */}
+                            
                             <button
                                 type="submit"
                                 className="w-full bg-purple-700 text-white rounded-lg px-4 py-3 font-medium mt-4">
@@ -179,17 +184,16 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
-            )}
+            )} */}
 
             {/* Registration Popup */}
-            {isRegistrationPopupOpen && (
+            {/* {isRegistrationPopupOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
                     <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-sm relative">
                         <h2 className="text-xl font-bold text-gray-800 mb-4">
                             Register Your Account
                         </h2>
                         <form onSubmit={handleRegister}>
-                            {/* Working Email */}
                             <div className="mb-4">
                                 <label
                                     htmlFor="workingEmail"
@@ -207,7 +211,6 @@ const Header = () => {
                                 />
                             </div>
 
-                            {/* Company's Name */}
                             <div className="mb-4">
                                 <label
                                     htmlFor="companyName"
@@ -225,7 +228,6 @@ const Header = () => {
                                 />
                             </div>
 
-                            {/* Company's URL */}
                             <div className="mb-4">
                                 <label
                                     htmlFor="companyUrl"
@@ -243,14 +245,12 @@ const Header = () => {
                                 />
                             </div>
 
-                            {/* Submit Button */}
                             <button
                                 type="submit"
                                 className="w-full bg-purple-700 text-white rounded-lg px-4 py-3 font-medium mt-4">
                                 Register
                             </button>
                         </form>
-                        {/* Already Have an Account? Login */}
                         <p className="text-sm text-gray-600 text-center mt-4">
                             Already have an account?{" "}
                             <button
@@ -281,7 +281,7 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
-            )}
+            )} */}
         </>
     );
 };

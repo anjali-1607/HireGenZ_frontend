@@ -18,7 +18,7 @@ const Hero = () => {
                     top candidates today!
                 </p>
                 <button
-                    onClick={() => navigate("/job-description")}
+                    onClick={() => navigate("/recruiters/job-description")}
                     className="mt-8 px-6 py-3 bg-purple-700 text-white rounded-lg">
                     Create a Job
                 </button>
