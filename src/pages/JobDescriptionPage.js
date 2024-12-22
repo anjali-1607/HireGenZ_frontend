@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import formImage from "../assets/formImage.png";
 import Header from "../components/Header";
+import Select from "react-select";
+import CreatableSelect from "react-select/creatable";
+import makeAnimated from "react-select/animated";
+import { usePublicCreateItem } from "../hooks/actions/mutation/usePublicCreateItem";
+import { APIENDPOINT } from "../utils/api";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import { useCreateItem } from "../hooks/actions/mutation/useCreateItem";
 
 const JobDescriptionPage = () => {
     const [formData, setFormData] = useState({
@@ -17,18 +25,88 @@ const JobDescriptionPage = () => {
         employment_type: "",
         job_type: "",
         education: "",
+        // recruiter: 2,
     });
+
+    const navigate = useNavigate();
+
+    const uploadMutation = useCreateItem(APIENDPOINT.POST_A_JOB);
+
+    const animatedComponents = makeAnimated();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleSelectChange = (name, selectedOptions) => {
+        setFormData((prev) => ({
+            ...prev,
+            [name]: selectedOptions || [], // Ensure the value is never null
+        }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("Job Post Submitted: ", formData);
-        alert("Job Post Submitted Successfully!");
+        const payload = preparePayload(formData);
+        uploadMutation.mutate(payload, {
+            onSuccess: (data) => {
+                console.log("data", data);
+                navigate("/recruiters/dashboard");
+                toast("Job Post Submitted Successfully!");
+            },
+            onError: (err) => {
+                console.error("Error submitting job post:", err);
+                toast("Failed to submit job post. Please try again.");
+            },
+        });
     };
+
+    const preparePayload = (data) => {
+        return {
+            ...data,
+            industry_type: data.industry_type
+                .map((item) => item.value)
+                .join(","),
+            employment_type: data.employment_type
+                .map((item) => item.value)
+                .join(","),
+            job_type: data.job_type.map((item) => item.value).join(","),
+            education: data.education.map((item) => item.value).join(","),
+        };
+    };
+
+    const educationOptions = [
+        { value: "highschool", label: "High School" },
+        { value: "bachelor", label: "Bachelor's Degree" },
+        { value: "master", label: "Master's Degree" },
+        { value: "phd", label: "Ph.D." },
+    ];
+
+    const jobTypeOptions = [
+        { value: "full_time", label: "Full-Time" },
+        { value: "part_time", label: "Part-Time" },
+        { value: "contract", label: "Contract" },
+        { value: "internship", label: "Internship" },
+        { value: "freelance", label: "Freelance" },
+    ];
+
+    const employmentTypeOptions = [
+        { value: "permanent", label: "Permanent" },
+        { value: "temporary", label: "Temporary" },
+        { value: "contractual", label: "Contractual" },
+        { value: "freelance", label: "Freelance" },
+        { value: "internship", label: "Internship" },
+    ];
+
+    const industryTypeOptions = [
+        { value: "technology", label: "Technology" },
+        { value: "healthcare", label: "Healthcare" },
+        { value: "finance", label: "Finance" },
+        { value: "education", label: "Education" },
+        { value: "manufacturing", label: "Manufacturing" },
+        { value: "retail", label: "Retail" },
+    ];
 
     return (
         <>
@@ -199,15 +277,142 @@ const JobDescriptionPage = () => {
                                 Industry Type{" "}
                                 <span className="text-red-500">*</span>
                             </label>
-                            <input
-                                type="text"
+                            <CreatableSelect
                                 id="industry_type"
                                 name="industry_type"
                                 value={formData.industry_type}
+                                onChange={(selectedOptions) =>
+                                    handleSelectChange(
+                                        "industry_type",
+                                        selectedOptions
+                                    )
+                                }
+                                options={industryTypeOptions}
+                                isMulti
+                                components={animatedComponents}
+                                className="w-full focus:ring-purple-500 focus:border-purple-500"
+                                placeholder="Select or Add Industry Type"
+                                isClearable
+                            />
+                        </div>
+
+                        {/* Role of the candidate */}
+                        <div className="mb-6">
+                            <label
+                                htmlFor="role"
+                                className="block text-gray-700 font-semibold mb-2">
+                                Role of the candidate{" "}
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="role"
+                                name="role"
+                                value={formData.role}
                                 onChange={handleInputChange}
                                 required
                                 className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-purple-500 focus:border-purple-500"
-                                placeholder="Enter industry type"
+                                placeholder="Enter Role"
+                            />
+                        </div>
+
+                        {/* Candidate Needed */}
+                        <div className="mb-6">
+                            <label
+                                htmlFor="candidates_needed"
+                                className="block text-gray-700 font-semibold mb-2">
+                                How many candidate you need{" "}
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <input
+                                type="number"
+                                id="candidates_needed"
+                                name="candidates_needed"
+                                value={formData.candidates_needed}
+                                onChange={handleInputChange}
+                                required
+                                className="w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-purple-500 focus:border-purple-500"
+                                placeholder="Enter Candidate Needed"
+                            />
+                        </div>
+
+                        {/* employment_type */}
+                        <div className="mb-6">
+                            <label
+                                htmlFor="employment_type"
+                                className="block text-gray-700 font-semibold mb-2">
+                                Employment Type{" "}
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <CreatableSelect
+                                id="employment_type"
+                                name="employment_type"
+                                value={formData.employment_type}
+                                onChange={(selectedOptions) =>
+                                    handleSelectChange(
+                                        "employment_type",
+                                        selectedOptions
+                                    )
+                                }
+                                options={employmentTypeOptions}
+                                isMulti
+                                components={animatedComponents}
+                                className="w-full focus:ring-purple-500 focus:border-purple-500"
+                                placeholder="Select or Add Employment Type"
+                                isClearable
+                            />
+                        </div>
+
+                        {/* job_type */}
+                        <div className="mb-6">
+                            <label
+                                htmlFor="job_type"
+                                className="block text-gray-700 font-semibold mb-2">
+                                Job Type <span className="text-red-500">*</span>
+                            </label>
+                            <CreatableSelect
+                                id="job_type"
+                                name="job_type"
+                                value={formData.job_type}
+                                onChange={(selectedOptions) =>
+                                    handleSelectChange(
+                                        "job_type",
+                                        selectedOptions
+                                    )
+                                }
+                                options={jobTypeOptions}
+                                isMulti
+                                components={animatedComponents}
+                                className="w-full focus:ring-purple-500 focus:border-purple-500"
+                                placeholder="Select or Add Job Type"
+                                isClearable
+                            />
+                        </div>
+
+                        {/* education */}
+                        <div className="mb-6">
+                            <label
+                                htmlFor="education"
+                                className="block text-gray-700 font-semibold mb-2">
+                                Education{" "}
+                                <span className="text-red-500">*</span>
+                            </label>
+                            <CreatableSelect
+                                id="education"
+                                name="education"
+                                value={formData.education}
+                                onChange={(selectedOptions) =>
+                                    handleSelectChange(
+                                        "education",
+                                        selectedOptions
+                                    )
+                                }
+                                options={educationOptions}
+                                isMulti
+                                components={animatedComponents}
+                                className="w-full focus:ring-purple-500 focus:border-purple-500"
+                                placeholder="Select or Add Education"
+                                isClearable
                             />
                         </div>
 
@@ -215,6 +420,21 @@ const JobDescriptionPage = () => {
                         <div className="flex justify-end gap-4 mt-6">
                             <button
                                 type="reset"
+                                onClick={() =>
+                                    setFormData({
+                                        title: "",
+                                        description: "",
+                                        experience: "",
+                                        min_ctc: "",
+                                        max_ctc: "",
+                                        locations: "",
+                                        key_skills: "",
+                                        industry_type: [],
+                                        employment_type: [],
+                                        job_type: [],
+                                        education: [],
+                                    })
+                                }
                                 className="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg">
                                 Reset
                             </button>

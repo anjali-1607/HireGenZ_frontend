@@ -6,4 +6,7 @@ export const APIENDPOINT = {
     VERIFY_REGISTER_RECRUITER: "api/users/verify-otp/",
     LOGIN_RECRUITER: "api/users/send-otp-login/",
     LOGIN_WITH_OTP: "api/users/login-with-otp/",
+    POST_A_JOB: "api/jobs/job-posts/",
+    MATCH_CANDIDATES: "api/matching/match-candidates/",
+    SEND_LINK: "api/tests/send-links/",
 };

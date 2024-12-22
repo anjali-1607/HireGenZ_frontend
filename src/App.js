@@ -13,34 +13,50 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import ProtectedRoute from "./utils/ProtectedRoutes";
 import Dashboard from "./pages/recuiters/Dashboard";
+import RecruiterDashboard from "./pages/recuiters/dashboard/RecruiterDashboard";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import GetCandidates from "./pages/recuiters/GetCandidates";
+
 // import CandidatePage from "./pages/CandidatePage"; // The page for "/"
 // import EmployerPage from "./pages/EmployerPage"; // The page for "/post-job"
 
 const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <ToastContainer />
-      <Router>
-        <Routes>
-          <Route path="/" element={<CandidatePage />} />
-          <Route path="/recruiters" element={<EmployerPage />}></Route>
-          <Route
-            path="/recruiters/job-description"
-            element={<ProtectedRoute Cmp={JobDescriptionPage} />}
-          />
-          <Route
-            path="/recruiters/dashboard"
-            element={<ProtectedRoute Cmp={Dashboard} />}
-          >
-            <Route path="job-posting" element={<JobDescriptionPage />} />
-          </Route>
-          <Route path="/recruiters/login" element={<Login />} />
-          <Route path="/recruiters/register" element={<Register />} />
-          <Route path="/job-description-step-two" element={<JDTwo />} />
-        </Routes>
-      </Router>
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <ToastContainer />
+            <Router>
+                <Routes>
+                    <Route path="/" element={<CandidatePage />} />
+                    <Route
+                        path="/recruiters"
+                        element={<EmployerPage />}></Route>
+                    <Route
+                        path="/recruiters/job-description"
+                        element={<ProtectedRoute Cmp={JobDescriptionPage} />}
+                    />
+                    <Route
+                        path="/recruiters/dashboard"
+                        element={<ProtectedRoute Cmp={Dashboard} />}>
+                        <Route
+                            path="job-posting"
+                            element={<JobDescriptionPage />}
+                        />
+                    </Route>
+                    <Route path="/recruiters/login" element={<Login />} />
+                    <Route path="/recruiters/register" element={<Register />} />
+                    <Route
+                        path="/recruiters/get-candidates/:jobId"
+                        element={<GetCandidates />}
+                    />
+                    <Route
+                        path="/job-description-step-two"
+                        element={<JDTwo />}
+                    />
+                    <Route path="/dashboard" element={<RecruiterDashboard />} />
+                </Routes>
+            </Router>
+        </QueryClientProvider>
+    );
 };
 
 export default App;

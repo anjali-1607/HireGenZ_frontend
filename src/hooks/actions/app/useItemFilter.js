@@ -1,3 +1,4 @@
+import { useQuery } from "react-query";
 import { secureAxios } from "../../../utils/Auth";
 
 export const useItemsFilter = (
@@ -13,7 +14,7 @@ export const useItemsFilter = (
             secureAxios
                 .get(`/${collection}${queryString ? `${queryString}` : ``}`)
                 .then((res) => {
-                    return res?.data;
+                    return res;
                 }),
         {
             enabled: enabled,
