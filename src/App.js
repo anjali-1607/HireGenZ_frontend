@@ -16,6 +16,8 @@ import Dashboard from "./pages/recuiters/Dashboard";
 import RecruiterDashboard from "./pages/recuiters/dashboard/RecruiterDashboard";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import GetCandidates from "./pages/recuiters/GetCandidates";
+import CandidateJDPage from "./screens/CandidateJDPage";
+import MCQTestPage from "./screens/MCQTestPage";
 
 // import CandidatePage from "./pages/CandidatePage"; // The page for "/"
 // import EmployerPage from "./pages/EmployerPage"; // The page for "/post-job"
@@ -53,6 +55,11 @@ const App = () => {
                         element={<JDTwo />}
                     />
                     <Route path="/dashboard" element={<RecruiterDashboard />} />
+                    <Route
+                        path="/detailed-job-description"
+                        element={<CandidateJDPage />}
+                    />
+                    <Route path="/test" element={<MCQTestPage />} />
                 </Routes>
             </Router>
         </QueryClientProvider>
