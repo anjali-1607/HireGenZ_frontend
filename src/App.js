@@ -56,7 +56,7 @@ const App = () => {
                     />
                     <Route path="/dashboard" element={<RecruiterDashboard />} />
                     <Route
-                        path="/detailed-job-description"
+                        path="/detailed-job-description/:jobId"
                         element={<CandidateJDPage />}
                     />
                     <Route path="/test" element={<MCQTestPage />} />

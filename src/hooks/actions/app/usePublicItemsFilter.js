@@ -1,3 +1,4 @@
+import { useQuery } from "react-query";
 import { publicAxios } from "../../../utils/Auth";
 
 export const usePublicItemsFilter = (
@@ -12,7 +13,7 @@ export const usePublicItemsFilter = (
             publicAxios
                 .get(`/${collection}${queryString ? `${queryString}` : ``}`)
                 .then((res) => {
-                    return res?.data;
+                    return res;
                 }),
         {
             enabled: enabled,

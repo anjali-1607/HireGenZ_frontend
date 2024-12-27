@@ -43,7 +43,7 @@ const FAQs = () => {
     };
 
     return (
-        <div className="bg-pink-100 py-16 px-6 md:px-16 relative">
+        <div id="faqs" className="bg-pink-100 py-16 px-6 md:px-16 relative">
             <div className="max-w-4xl mx-auto">
                 {/* Heading and Question Mark */}
                 <div className="flex items-center mb-8">

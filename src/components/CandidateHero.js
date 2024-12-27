@@ -5,6 +5,13 @@ import { APIENDPOINT } from "../utils/api";
 import Select from "react-select"; // Import react-select
 import HzModal from "./HzModal";
 import { toast } from "react-toastify";
+import {
+    faFileAlt,
+    faLaptop,
+    faCloudUploadAlt,
+    faRobot,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CandidateHero = () => {
     const [showModal, setShowModal] = useState(false);
@@ -109,7 +116,9 @@ const CandidateHero = () => {
 
     return (
         <>
-            <section className="bg-purple-100 flex flex-col items-center justify-center text-center py-16 px-8 pt-40">
+            <section
+                id="upload-resume"
+                className="bg-purple-100 flex flex-col items-center justify-center text-center py-16 px-8 pt-40">
                 <h1 className="text-5xl font-bold text-gray-800 leading-snug">
                     From Upload to Offer:
                     <br />
@@ -126,9 +135,9 @@ const CandidateHero = () => {
                     className="mt-10 px-8 py-4 bg-purple-700 text-white text-lg font-semibold rounded-lg">
                     Upload a Resume
                 </button>
-                <p className="mt-3 text-md text-purple-700">
+                {/* <p className="mt-3 text-md text-purple-700">
                     Get your ATS score in seconds.
-                </p>
+                </p> */}
             </section>
 
             {/* Modal */}

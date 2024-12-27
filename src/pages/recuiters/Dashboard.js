@@ -13,23 +13,6 @@ import { useItemsFilter } from "../../hooks/actions/app/useItemFilter";
 import { APIENDPOINT } from "../../utils/api";
 
 const Dashboard = () => {
-    // const [jobPosts, setJobPosts] = useState([
-    //     {
-    //         id: 1,
-    //         title: "Frontend Developer",
-    //         description:
-    //             "Looking for an experienced frontend developer skilled in React.",
-    //         candidates: 45,
-    //     },
-    //     {
-    //         id: 2,
-    //         title: "Backend Developer",
-    //         description:
-    //             "Hiring a backend developer proficient in Node.js and MongoDB.",
-    //         candidates: 30,
-    //     },
-    // ]);
-
     const [selectedJob, setSelectedJob] = useState(null);
     const [candidates, setCandidates] = useState([]);
     const [testResults, setTestResults] = useState([]);
@@ -40,22 +23,6 @@ const Dashboard = () => {
     console.log("data", data);
 
     const getCandidates = (jobId) => {
-        // const selectedJob = jobPosts.find((post) => post.id === jobId);
-        // const candidatesData = [
-        //     {
-        //         id: 1,
-        //         name: "John Doe",
-        //         email: "john.doe@example.com",
-        //         resume: "Resume.pdf",
-        //     },
-        //     {
-        //         id: 2,
-        //         name: "Jane Smith",
-        //         email: "jane.smith@example.com",
-        //         resume: "Resume.pdf",
-        //     },
-        // ];
-
         navigate(`/recruiters/get-candidates/${jobId}`);
     };
 

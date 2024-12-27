@@ -38,7 +38,7 @@ const DreamJobSteps = () => {
                 {steps.map((step, index) => (
                     <div
                         key={index}
-                        className="relative p-6 border rounded-lg shadow-lg bg-pink-100">
+                        className="relative p-6 border rounded-lg shadow-lg bg-pink-100 transition-transform duration-300 transform hover:scale-105 hover:shadow-xl hover:bg-pink-200">
                         {/* Circle with Number */}
                         <div className="absolute -top-5 left-5 w-12 h-12 bg-purple-700 text-white font-bold flex items-center justify-center rounded-full border-4 border-pink-100">
                             {index + 1}

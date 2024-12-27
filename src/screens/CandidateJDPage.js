@@ -10,10 +10,18 @@ import {
 } from "react-icons/fa"; // Import icons
 import logo from "../assets/hiregenzo-logo-final.png";
 import img from "../assets/office-cover-img.png";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useItemsFilter } from "../hooks/actions/app/useItemFilter";
+import { APIENDPOINT } from "../utils/api";
+import { usePublicItemsFilter } from "../hooks/actions/app/usePublicItemsFilter";
 
 const CandidateJDPage = () => {
     const navigate = useNavigate();
+    const { jobId } = useParams();
+
+    const { data } = usePublicItemsFilter(`${APIENDPOINT.POST_A_JOB}${jobId}`);
+    console.log("data", data);
+
     // Job data
     const jobData = {
         title: "Software Engineer",
@@ -59,6 +67,7 @@ const CandidateJDPage = () => {
                 />
 
                 {/* Overlapping Div */}
+
                 <div className="absolute bg-white w-11/12 max-w-7xl mx-auto left-1/2 transform -translate-x-1/2 -mt-10 sm:-mt-16 lg:-mt-52 p-8 rounded-lg shadow-lg">
                     {/* Job Title */}
                     <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 text-center sm:text-left">

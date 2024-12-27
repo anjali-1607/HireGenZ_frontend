@@ -4,6 +4,7 @@ import Header from "../Header";
 import { usePublicCreateItem } from "../../hooks/actions/mutation/usePublicCreateItem";
 import { APIENDPOINT } from "../../utils/api";
 import { toast } from "react-toastify";
+import { setAuthToken } from "../../utils/Auth";
 
 export default function Register() {
     const [formData, setFormData] = useState({
@@ -42,6 +43,9 @@ export default function Register() {
         e.preventDefault();
         verifyMutation.mutate(formData, {
             onSuccess: (data) => {
+                localStorage.setItem("access_token", data.tokens.access);
+                setAuthToken(data.tokens.access);
+                navigate("/recruiters/dashboard");
                 setStep(2);
             },
             onError: (err) => {

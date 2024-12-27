@@ -5,18 +5,38 @@ import logo from "../assets/hiregenzo-logo-final.png";
 const CandidateHeader = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
     const [isScrolled, setIsScrolled] = useState(false); // State to track if the header should have a white background
+    const [activeSection, setActiveSection] = useState("home"); // State to track the active section
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
-    // Handle scroll to toggle header background
+    // Handle scroll to toggle header background and active link
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 50) {
                 setIsScrolled(true);
             } else {
                 setIsScrolled(false);
+            }
+
+            // Update active section based on scroll position
+            const sections = ["home", "upload-resume", "features", "faqs"];
+            const offsets = sections.map((id) => {
+                const element = document.getElementById(id);
+                return element ? element.offsetTop : 0;
+            });
+
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            for (let i = 0; i < sections.length; i++) {
+                if (
+                    scrollPosition >= offsets[i] &&
+                    (i === sections.length - 1 ||
+                        scrollPosition < offsets[i + 1])
+                ) {
+                    setActiveSection(sections[i]);
+                    break;
+                }
             }
         };
 
@@ -31,46 +51,55 @@ const CandidateHeader = () => {
             className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${
                 isScrolled ? "bg-white shadow-lg" : "bg-transparent"
             }`}>
-            {/* Desktop Header */}
-            <div className="flex items-center justify-between px-8 py-4">
+            <div className="flex items-center px-8 py-4">
                 {/* Logo */}
                 <Link to="/">
                     <img src={logo} alt="HireGeni Logo" className="h-8" />
                 </Link>
-                {/* <h2 className="text-xl font-bold text-gray-800">HIREGENZO</h2> */}
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex gap-6">
-                    <Link
-                        to="/"
-                        className="text-gray-600 hover:text-purple-700 font-medium">
+                <nav className="hidden md:flex gap-8 ml-auto lg:mr-20">
+                    <a
+                        href="#home"
+                        className={`font-medium ${
+                            activeSection === "home"
+                                ? "text-purple-700 font-extrabold"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}>
                         Home
-                    </Link>
-                    <Link
-                        to="/upload-resume"
-                        className="text-gray-600 hover:text-purple-700 font-medium">
+                    </a>
+                    <a
+                        href="#upload-resume"
+                        className={`font-medium ${
+                            activeSection === "upload-resume"
+                                ? "text-purple-700 font-bold"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}>
                         Upload Resume
-                    </Link>
-                    <Link
-                        to="/features"
-                        className="text-gray-600 hover:text-purple-700 font-medium">
+                    </a>
+                    <a
+                        href="#features"
+                        className={`font-medium ${
+                            activeSection === "features"
+                                ? "text-purple-700 font-bold"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}>
                         Features
-                    </Link>
-                    <Link
-                        to="/faqs"
-                        className="text-gray-600 hover:text-purple-700 font-medium">
+                    </a>
+                    <a
+                        href="#faqs"
+                        className={`font-medium ${
+                            activeSection === "faqs"
+                                ? "text-purple-700 font-bold"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}>
                         FAQs
-                    </Link>
+                    </a>
                 </nav>
-
-                {/* Login Button */}
-                <button className="hidden md:block px-6 py-2 bg-purple-700 text-white rounded-lg font-medium ">
-                    Upload
-                </button>
 
                 {/* Mobile Hamburger Menu */}
                 <button
-                    className="block md:hidden text-purple-700"
+                    className="block md:hidden text-purple-700 ml-auto"
                     onClick={toggleMenu}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -92,35 +121,46 @@ const CandidateHeader = () => {
             {isMenuOpen && (
                 <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
                     <nav className="flex flex-col items-center gap-4 py-4">
-                        <Link
-                            to="/"
-                            className="text-gray-600 hover:text-purple-700 font-medium"
+                        <a
+                            href="#home"
+                            className={`font-medium ${
+                                activeSection === "home"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}
                             onClick={toggleMenu}>
                             Home
-                        </Link>
-                        <Link
-                            to="/upload-resume"
-                            className="text-gray-600 hover:text-purple-700 font-medium"
+                        </a>
+                        <a
+                            href="#upload-resume"
+                            className={`font-medium ${
+                                activeSection === "upload-resume"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}
                             onClick={toggleMenu}>
                             Upload Resume
-                        </Link>
-                        <Link
-                            to="/features"
-                            className="text-gray-600 hover:text-purple-700 font-medium"
+                        </a>
+                        <a
+                            href="#features"
+                            className={`font-medium ${
+                                activeSection === "features"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}
                             onClick={toggleMenu}>
                             Features
-                        </Link>
-                        <Link
-                            to="/faqs"
-                            className="text-gray-600 hover:text-purple-700 font-medium"
+                        </a>
+                        <a
+                            href="#faqs"
+                            className={`font-medium ${
+                                activeSection === "faqs"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}
                             onClick={toggleMenu}>
                             FAQs
-                        </Link>
-                        <button
-                            className="px-6 py-2 bg-purple-700 text-white rounded-lg font-medium"
-                            onClick={toggleMenu}>
-                            Upload
-                        </button>
+                        </a>
                     </nav>
                 </div>
             )}
