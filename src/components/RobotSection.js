@@ -101,10 +101,12 @@ const RobotSection = () => {
 
     return (
         <>
-            <section className="bg-gradient-to-br from-white via-purple-200 to-pink-200 pt-12 px-6 lg:px-48 lg:pb-0 lg:mb-[-20px]">
+            <section
+                id="upload-resume"
+                className="bg-gradient-to-br from-white via-purple-200 to-pink-200 pt-12 px-6 lg:px-48 lg:pb-0 lg:mb-[-20px]">
                 <div className="container mx-auto flex flex-col-reverse lg:flex-row items-start lg:items-start lg:gap-4 md:items-center sm:items-center">
                     {/* Robot Image */}
-                    <div className="lg:w-1/2 flex justify-center md:justify-center lg:justify-center">
+                    <div className="lg:w-1/2 flex justify-center md:justify-center lg:justify-center mt-8 lg:mt-0 mb-0">
                         <img
                             src={RobotImage}
                             alt="AI Robot"
@@ -133,7 +135,7 @@ const RobotSection = () => {
                         <div className="flex justify-center lg:justify-start gap-4">
                             <button
                                 onClick={handleOpenModal}
-                                className="bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] text-white px-6 py-3 rounded-lg text-sm  hover:opacity-90 transition-transform transform hover:scale-105 animate-fadeIn delay-300">
+                                className="bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] text-white px-6 py-3 rounded-lg text-sm hover:opacity-90 transition-transform transform hover:scale-105 animate-fadeIn delay-300">
                                 Upload Resume
                             </button>
                             <button className="bg-gray-100 text-gray-800 px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-200 transition">

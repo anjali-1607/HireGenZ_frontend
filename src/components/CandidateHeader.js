@@ -21,7 +21,13 @@ const CandidateHeader = () => {
             }
 
             // Update active section based on scroll position
-            const sections = ["home", "upload-resume", "features", "faqs"];
+            const sections = [
+                "home",
+                "upload-resume",
+                "features",
+                "faqs",
+                "post_a_job",
+            ];
             const offsets = sections.map((id) => {
                 const element = document.getElementById(id);
                 return element ? element.offsetTop : 0;
@@ -95,6 +101,16 @@ const CandidateHeader = () => {
                         }`}>
                         FAQs
                     </a>
+                    <a
+                        href="#post_a_job"
+                        className={`font-medium ${
+                            activeSection === "post_a_job"
+                                ? "text-purple-700"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}
+                        onClick={toggleMenu}>
+                        Post a Job
+                    </a>
                 </nav>
 
                 {/* Mobile Hamburger Menu */}
@@ -160,6 +176,16 @@ const CandidateHeader = () => {
                             }`}
                             onClick={toggleMenu}>
                             FAQs
+                        </a>
+                        <a
+                            href="#post_a_job"
+                            className={`font-medium ${
+                                activeSection === "post_a_job"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}
+                            onClick={toggleMenu}>
+                            Post a Job
                         </a>
                     </nav>
                 </div>
