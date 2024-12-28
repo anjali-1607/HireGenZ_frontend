@@ -81,7 +81,7 @@ const CandidateHeader = () => {
                                 ? "text-purple-700 font-bold"
                                 : "text-gray-600 hover:text-purple-700"
                         }`}>
-                        Upload Resume
+                        Apply for a Job
                     </a>
                     <a
                         href="#features"

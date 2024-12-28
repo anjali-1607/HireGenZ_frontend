@@ -1,21 +1,36 @@
 import React, { useState } from "react";
 import heroImage from "../assets/hero-image.png";
+import { usePublicCreateItem } from "../hooks/actions/mutation/usePublicCreateItem";
+import { APIENDPOINT } from "../utils/api";
 
 const ResumeHero = () => {
     const [isProcessing, setIsProcessing] = useState(false);
     const [uploadedFile, setUploadedFile] = useState(null);
 
-    const handleFileUpload = (event) => {
+    const uploadMutation = usePublicCreateItem(APIENDPOINT.ANALYZE_RESUME);
+
+    const handleFileUpload = async (event) => {
         const file = event.target.files[0];
         if (file) {
             setUploadedFile(file);
             console.log("File uploaded:", file.name);
 
-            // Simulate processing
+            // Create FormData
+            const formData = new FormData();
+            formData.append("resume", file);
+
+            // Call the mutation to upload the file
             setIsProcessing(true);
-            setTimeout(() => {
-                setIsProcessing(false);
-            }, 5000); // Example: 5 seconds for processing
+            uploadMutation.mutate(formData, {
+                onSuccess: (response) => {
+                    console.log("Upload successful:", response.data);
+                    setIsProcessing(false);
+                },
+                onError: (error) => {
+                    console.error("Error uploading file:", error);
+                    setIsProcessing(false);
+                },
+            });
         }
     };
 
@@ -43,21 +58,29 @@ const ResumeHero = () => {
 
                 <label
                     htmlFor="resume-upload"
-                    className="inline-block lg:ml-8 mt-6 bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] text-white font-semibold text-lg md:text-xl py-4 px-10 rounded-lg shadow-lg cursor-pointer hover:opacity-90 transition-transform transform hover:scale-105 animate-fadeIn delay-300">
-                    Upload and Analyze
+                    className={`inline-block lg:ml-8 mt-6 ${
+                        isProcessing
+                            ? "bg-gray-400 cursor-not-allowed"
+                            : "bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105"
+                    } text-white font-semibold text-lg md:text-xl py-4 px-10 rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300`}>
+                    {isProcessing
+                        ? "Processing your resume..."
+                        : "Upload and Analyze"}
                     <input
                         id="resume-upload"
                         type="file"
                         accept=".pdf,.doc,.docx"
                         onChange={handleFileUpload}
                         className="hidden"
+                        disabled={isProcessing} // Disable input during processing
                     />
                 </label>
-                {isProcessing && (
+
+                {/*                 {isProcessing && (
                     <p className="mt-4 text-lg text-purple-600 animate-pulse">
                         Processing your resume...
                     </p>
-                )}
+                )} */}
             </div>
 
             {/* Right Section (Image) */}

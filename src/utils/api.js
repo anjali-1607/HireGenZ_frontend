@@ -9,4 +9,5 @@ export const APIENDPOINT = {
     POST_A_JOB: "api/jobs/job-posts/",
     MATCH_CANDIDATES: "api/matching/match-candidates/",
     SEND_LINK: "api/tests/send-links/",
+    ANALYZE_RESUME: "api/analyze/",
 };

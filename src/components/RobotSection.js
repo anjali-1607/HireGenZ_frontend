@@ -136,7 +136,7 @@ const RobotSection = () => {
                             <button
                                 onClick={handleOpenModal}
                                 className="bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] text-white px-6 py-3 rounded-lg text-sm hover:opacity-90 transition-transform transform hover:scale-105 animate-fadeIn delay-300">
-                                Upload Resume
+                                Apply for a Job
                             </button>
                             <button className="bg-gray-100 text-gray-800 px-6 py-3 rounded-lg text-sm font-medium hover:bg-gray-200 transition">
                                 Learn More
