@@ -6,7 +6,9 @@ const RecruitersSection = () => {
     const navigate = useNavigate(); // Correct hook for navigation
 
     return (
-        <div id="post_a_job" className="bg-purple-100 py-16 px-6 md:px-16">
+        <div
+            id="post_a_job"
+            className="bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100 py-16 px-6 md:px-16">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center">
                 {/* Image Section */}
                 <div className="w-full md:w-1/2">

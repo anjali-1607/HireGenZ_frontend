@@ -44,7 +44,7 @@ const Testimonials = () => {
     ];
 
     return (
-        <div className="bg-purple-100 py-16">
+        <div className="bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100 py-16 md:px-6 sm:px-8">
             <h2 className="text-4xl font-bold text-center mb-12">
                 Testimonials
             </h2>
