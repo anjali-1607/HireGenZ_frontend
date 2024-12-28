@@ -26,7 +26,7 @@ const CandidatePage = () => {
             <ResumeHero />
 
             <DreamJobSteps />
-            <CandidateHero />
+            {/* <CandidateHero /> */}
             <RobotSection />
             <CandidateFeatures />
             <Testimonials />

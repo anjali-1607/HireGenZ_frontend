@@ -51,35 +51,26 @@ const CandidateFeatures = () => {
     return (
         <section
             id="features"
-            className="relative bg-gray-900 py-16 px-12 lg:px-44 overflow-hidden">
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute w-[200px] h-[200px] bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500 opacity-30 rounded-full animate-spin-slow top-16 left-10"></div>
-                <div className="absolute w-[150px] h-[150px] bg-gradient-to-r from-green-400 to-blue-500 opacity-30 rounded-full animate-bounce top-1/2 right-16"></div>
-                <div className="absolute w-[250px] h-[250px] bg-gradient-to-r from-yellow-400 via-red-500 to-purple-500 opacity-20 rounded-full animate-pulse bottom-10 left-1/4"></div>
-            </div>
-
-            <h1 className="text-4xl font-bold text-center text-gray-100 mb-12">
+            className="relative bg-gradient-to-r from-[#be76f7] to-[#ec88ba] py-16 px-12 lg:px-44 overflow-hidden">
+            <h1 className="text-4xl font-bold text-center text-white mb-12">
                 Features
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {features.map((feature, index) => (
                     <div
                         key={index}
-                        className="relative p-6 bg-gray-800 shadow-md hover:shadow-xl transition duration-300 border border-gray-700 hover:border-purple-500 transform hover:scale-105 hover:bg-gray-700 flex flex-col items-center justify-center">
+                        className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col items-center text-center border-t-4 border-purple-500 hover:border-purple-700">
                         {/* Icon */}
-                        <div className="flex justify-center mb-4 text-purple-400">
+                        <div className="mb-4 text-purple-500">
                             {feature.icon}
                         </div>
                         {/* Title */}
-                        <h3 className="text-lg font-semibold text-gray-100 text-center mb-2">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">
                             {feature.title}
                         </h3>
                         {/* Description */}
-                        <p className="text-gray-400 text-center">
-                            {feature.description}
-                        </p>
+                        <p className="text-gray-600">{feature.description}</p>
                     </div>
                 ))}
             </div>
