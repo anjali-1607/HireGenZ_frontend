@@ -20,7 +20,7 @@ const ResumeHero = () => {
     };
 
     return (
-        <div className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:px-10 py-16 bg-gradient-to-br from-purple-50 to-purple-100 relative lg:pt-28">
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:px-10 py-16 bg-gradient-to-br from-purple-50 to-purple-100 relative pt-28">
             {/* Left Section (Content) */}
             <div className="w-full lg:w-1/2 text-center lg:text-left space-y-6 lg:space-y-7 lg:ml-10 animate-slideInLeft">
                 <div className="px-4 md:px-8 py-8">

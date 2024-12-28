@@ -15,54 +15,60 @@ const CandidateFeatures = () => {
             title: "Automated Job Applications",
             description:
                 "Upload your resume, and let AI do the work! Our platform automatically applies to jobs that match your skills and preferences, saving you time and effort.",
+            animation: "animate-slideInLeft",
         },
         {
             icon: <FaSearch size={40} />,
             title: "Smart Job Matching",
             description:
                 "Our AI analyzes your profile and preferences to find the best-fit opportunities, ensuring you only apply for roles where you truly excel.",
+            animation: "animate-slideInRight",
         },
         {
             icon: <FaClipboardCheck size={40} />,
             title: "Resume Enhancement",
             description:
                 "Low ATS score? No worries! Use our built-in tools to enhance your resume for higher compatibility and better chances of success.",
+            animation: "animate-slideInLeft",
         },
         {
             icon: <FaCertificate size={40} />,
             title: "Skill Validation Tests",
             description:
                 "Take short, role-specific tests to confirm your skills and stand out from the competition. Receive instant feedback and improve your chances of shortlisting.",
+            animation: "animate-slideInRight",
         },
         {
             icon: <FaUserTie size={40} />,
             title: "Recruiter-Friendly Dashboard",
             description:
                 "For recruiters, our platform provides ranked candidate profiles based on AI matching and test scores, making hiring decisions smarter and faster.",
+            animation: "animate-slideInLeft",
         },
         {
             icon: <FaBell size={40} />,
             title: "Real-Time Notifications",
             description:
                 "Stay informed every step of the way with updates on job matches, test invites, shortlisting, and interview calls—right at your fingertips.",
+            animation: "animate-slideInRight",
         },
     ];
 
     return (
         <section
             id="features"
-            className="relative bg-gradient-to-r from-[#be76f7] to-[#ec88ba] py-16 px-12 lg:px-44 overflow-hidden">
-            <h1 className="text-4xl font-bold text-center text-white mb-12">
+            className="relative  py-16 px-12 lg:px-44 lg:mt-12 overflow-hidden">
+            <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
                 Features
             </h1>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-16">
                 {features.map((feature, index) => (
                     <div
                         key={index}
-                        className="p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 flex flex-col items-center text-center border-t-4 border-purple-500 hover:border-purple-700">
+                        className={`p-6 bg-gradient-to-br from-[#ffffff] via-[#e7cfff] to-[#f9d7ff] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 flex flex-col items-center text-center border-r-4 border-purple-400 hover:border-purple-700 ${feature.animation}`}>
                         {/* Icon */}
-                        <div className="mb-4 text-purple-500">
+                        <div className="mb-4 text-purple-700">
                             {feature.icon}
                         </div>
                         {/* Title */}
@@ -70,7 +76,7 @@ const CandidateFeatures = () => {
                             {feature.title}
                         </h3>
                         {/* Description */}
-                        <p className="text-gray-600">{feature.description}</p>
+                        <p className="text-gray-700">{feature.description}</p>
                     </div>
                 ))}
             </div>

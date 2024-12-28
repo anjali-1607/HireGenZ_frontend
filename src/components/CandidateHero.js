@@ -5,13 +5,6 @@ import { APIENDPOINT } from "../utils/api";
 import Select from "react-select"; // Import react-select
 import HzModal from "./HzModal";
 import { toast } from "react-toastify";
-import {
-    faFileAlt,
-    faLaptop,
-    faCloudUploadAlt,
-    faRobot,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CandidateHero = () => {
     const [showModal, setShowModal] = useState(false);

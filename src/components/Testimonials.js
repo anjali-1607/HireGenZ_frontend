@@ -8,7 +8,7 @@ const Testimonials = () => {
         {
             id: 1,
             quote: "This platform saved me hours of effort. The resume enhancement feature boosted my ATS score, and I started receiving interview calls from top companies in no time!",
-            name: "Rahul M., Marketing Specialist",
+            // name: "Rahul M., Marketing Specialist",
             avatar: boyAvatar, // Using boy avatar
             roundedClass: "rounded-r-full", // Right-rounded card
             flexDirection: "flex-row-reverse", // Image at the right
@@ -17,7 +17,7 @@ const Testimonials = () => {
         {
             id: 2,
             quote: "As a recruiter, I found the perfect candidates in minutes. The AI-ranked profiles and skill test results made hiring decisions easy and efficient.",
-            name: "Meera K., HR Manager",
+            // name: "Meera K., HR Manager",
             avatar: girlAvatar, // Using girl avatar
             roundedClass: "rounded-l-full", // Left-rounded card
             flexDirection: "flex-row", // Image at the left
@@ -26,7 +26,7 @@ const Testimonials = () => {
         {
             id: 3,
             quote: "The skill test feature is a game-changer. It validated my abilities and increased my confidence in securing interviews. Highly recommended!",
-            name: "Arushi T., Graphic Designer",
+            // name: "Arushi T., Graphic Designer",
             avatar: girlAvatar, // Using girl avatar
             roundedClass: "rounded-l-full", // Left-rounded card
             flexDirection: "flex-row", // Image at the left
@@ -35,7 +35,7 @@ const Testimonials = () => {
         {
             id: 4,
             quote: "The AI matched me to my dream job! I was so relieved to skip the tedious application process. The notifications kept me updated throughout.",
-            name: "John D., Data Analyst",
+            // name: "John D., Data Analyst",
             avatar: boyAvatar, // Using boy avatar
             roundedClass: "rounded-r-full", // Right-rounded card
             flexDirection: "flex-row-reverse", // Image at the right
