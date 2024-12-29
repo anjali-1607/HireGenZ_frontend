@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
     FaRobot,
     FaSearch,
@@ -9,6 +9,9 @@ import {
 } from "react-icons/fa";
 
 const CandidateFeatures = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
     const features = [
         {
             icon: <FaRobot size={40} />,
@@ -54,10 +57,35 @@ const CandidateFeatures = () => {
         },
     ];
 
+    // Detect when the component is in the viewport
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.2, // Trigger when 20% of the component is visible
+            }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
         <section
             id="features"
-            className="relative  py-16 px-12 lg:px-44 lg:mt-12 overflow-hidden">
+            ref={sectionRef}
+            className="relative py-16 px-12 lg:px-44 lg:mt-12 overflow-hidden">
             <h1 className="text-4xl font-bold text-center text-gray-800 mb-12">
                 Features
             </h1>
@@ -66,7 +94,9 @@ const CandidateFeatures = () => {
                 {features.map((feature, index) => (
                     <div
                         key={index}
-                        className={`p-6 bg-gradient-to-br from-[#ffffff] via-[#e7cfff] to-[#f9d7ff] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 flex flex-col items-center text-center border-r-4 border-purple-400 hover:border-purple-700 ${feature.animation}`}>
+                        className={`p-6 bg-gradient-to-br from-[#ffffff] via-[#e7cfff] to-[#f9d7ff] rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:scale-105 flex flex-col items-center text-center border-r-4 border-purple-400 hover:border-purple-700 ${
+                            isVisible ? feature.animation : "opacity-0"
+                        }`}>
                         {/* Icon */}
                         <div className="mb-4 text-purple-700">
                             {feature.icon}

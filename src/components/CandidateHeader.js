@@ -177,7 +177,7 @@ const CandidateHeader = () => {
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
                             }`}>
-                            Upload Resume
+                            Apply for a Job
                         </a>
                         <a
                             onClick={() => scrollToSection("features")}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import RobotImage from "../assets/robot.png"; // Correct path to robot image.
 import { FaQuoteLeft } from "react-icons/fa"; // Import for purple quote icon.
 import HzModal from "./HzModal"; // Import modal component
@@ -99,6 +99,30 @@ const RobotSection = () => {
         });
     };
 
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.3 } // Trigger when 30% of the section is visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
         <>
             <section
@@ -106,7 +130,11 @@ const RobotSection = () => {
                 className="bg-gradient-to-br from-white via-purple-200 to-pink-200 pt-12 px-6 lg:px-48 lg:pb-0 lg:mb-[-20px]">
                 <div className="container mx-auto flex flex-col-reverse lg:flex-row items-start lg:items-start lg:gap-4 md:items-center sm:items-center">
                     {/* Robot Image */}
-                    <div className="lg:w-1/2 flex justify-center md:justify-center lg:justify-center mt-8 lg:mt-0 mb-0">
+                    <div
+                        ref={sectionRef}
+                        className={`lg:w-1/2 flex justify-center md:justify-center lg:justify-center mt-8 lg:mt-0 mb-0 ${
+                            isVisible ? " animate-slideInLeft" : "opacity-0"
+                        }`}>
                         <img
                             src={RobotImage}
                             alt="AI Robot"
@@ -115,7 +143,11 @@ const RobotSection = () => {
                     </div>
 
                     {/* Text Content */}
-                    <div className="lg:w-1/2 flex flex-col justify-start lg:mt-5 text-center lg:text-left lg:mr-9">
+                    <div
+                        ref={sectionRef}
+                        className={`lg:w-1/2 flex flex-col justify-start lg:mt-5 text-center lg:text-left lg:mr-9 ${
+                            isVisible ? "animate-slideInRight" : "opacity-0"
+                        } `}>
                         <div className="text-purple-600 text-4xl mb-4">
                             <FaQuoteLeft />
                         </div>
