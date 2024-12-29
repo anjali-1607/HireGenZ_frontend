@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/hiregenzo-logo-final.png";
 
 const Footer = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const footerRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.3 } // Trigger when 30% of the footer is visible
+        );
+
+        if (footerRef.current) {
+            observer.observe(footerRef.current);
+        }
+
+        return () => {
+            if (footerRef.current) {
+                observer.unobserve(footerRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <footer className="bg-gray-100 text-gray-600">
+        <footer
+            ref={footerRef}
+            className={`bg-gray-100 text-gray-600 transition-transform duration-1000 ${
+                isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-10 opacity-0"
+            }`}>
             <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 md:px-8">
                 {/* Top Section */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
@@ -91,8 +121,6 @@ const Footer = () => {
                         </ul>
                     </div>
                 </div>
-
-                {/* Training Partner Section */}
             </div>
 
             {/* Bottom Section */}

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaChevronDown } from "react-icons/fa"; // Chevron icon for toggle
 import quemark from "../assets/quemark.png"; // Importing the provided image
 
 const FAQs = () => {
     const [activeQuestion, setActiveQuestion] = useState(null);
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
 
     const faqs = [
         {
@@ -42,8 +44,33 @@ const FAQs = () => {
         setActiveQuestion(activeQuestion === id ? null : id);
     };
 
+    // Intersection Observer to trigger animation
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.2 }
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <div id="faqs" className=" py-16 px-6 md:px-16 relative">
+        <div
+            ref={sectionRef}
+            id="faqs"
+            className="py-16 px-6 md:px-16 relative bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100">
             <div className="max-w-4xl mx-auto">
                 {/* Heading and Question Mark */}
                 <div className="flex items-center mb-8">
@@ -58,10 +85,13 @@ const FAQs = () => {
                 </div>
 
                 <div className="space-y-4">
-                    {faqs.map((faq) => (
+                    {faqs.map((faq, index) => (
                         <div
                             key={faq.id}
-                            className="bg-white shadow-md rounded-md border border-gray-200">
+                            className={`relative bg-white shadow-md rounded-md border border-gray-200 transform transition-transform duration-700 ${
+                                isVisible ? "animate-slideUp" : "opacity-0"
+                            }`}
+                            style={{ animationDelay: `${index * 0.2}s` }}>
                             {/* Question */}
                             <div
                                 className="flex justify-between items-center px-6 py-4 cursor-pointer"

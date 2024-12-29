@@ -1,11 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaAward, FaChalkboardTeacher, FaArrowRight } from "react-icons/fa";
 
 const TrainingPartner = () => {
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.3 } // Trigger when 30% of the section is visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
         <div
             id="training-partner"
-            className=" text-gray-700 my-10 py-10 px-8 rounded-xl ">
+            ref={sectionRef}
+            className={`text-gray-700 my-10 py-10 px-8 rounded-xl transition-transform duration-1000 ${
+                isVisible
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-20 opacity-0"
+            }`}>
             <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-y-0 lg:space-x-8">
                 {/* Content Section */}
                 <div className="text-center lg:text-left lg:max-w-3xl space-y-6">
