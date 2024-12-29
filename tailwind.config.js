@@ -4,8 +4,8 @@ module.exports = {
     theme: {
         extend: {
             animation: {
-                slideInLeft: "slideInLeft 2s ease-out",
-                slideInRight: "slideInRight 2s ease-out",
+                slideInLeft: "slideInLeft 1s ease-out",
+                slideInRight: "slideInRight 1s ease-out",
                 slideUp: "slideUp 1s ease-out forwards",
                 float: "float 3s ease-in-out infinite",
             },

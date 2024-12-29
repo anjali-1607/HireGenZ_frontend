@@ -10,6 +10,7 @@ import RecruitersSection from "../components/RecruitersSection";
 import Footer from "../components/Footer";
 import ResumeHero from "../components/ResumeHero";
 import Carousel from "../components/Carousel";
+import TrainingPartner from "../components/TrainingPartner";
 // import CandidateHeader from "../components/CandidateHeader";
 // import CandidateHero from "../components/CandidateHero";
 // import CandidateFeatures from "../components/CandidateFeatures";
@@ -32,6 +33,7 @@ const CandidatePage = () => {
             <Testimonials />
             <FAQs />
             <RecruitersSection />
+            <TrainingPartner />
             <Footer />
         </div>
     );

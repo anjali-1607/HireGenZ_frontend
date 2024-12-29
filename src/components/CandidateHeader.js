@@ -11,6 +11,15 @@ const CandidateHeader = () => {
         setIsMenuOpen(!isMenuOpen);
     };
 
+    // Smooth scrolling to sections
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+        setIsMenuOpen(false); // Close the menu on mobile after navigation
+    };
+
     // Handle scroll to toggle header background and active link
     useEffect(() => {
         const handleScroll = () => {
@@ -27,6 +36,7 @@ const CandidateHeader = () => {
                 "features",
                 "faqs",
                 "post_a_job",
+                "training-partner",
             ];
             const offsets = sections.map((id) => {
                 const element = document.getElementById(id);
@@ -60,14 +70,14 @@ const CandidateHeader = () => {
             <div className="flex items-center px-8 py-4">
                 {/* Logo */}
                 <Link to="/">
-                    <img src={logo} alt="HireGeni Logo" className="h-8" />
+                    <img src={logo} alt="HireGenZo Logo" className="h-8" />
                 </Link>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex gap-8 ml-auto lg:mr-20">
                     <a
-                        href="#home"
-                        className={`font-medium ${
+                        onClick={() => scrollToSection("home")}
+                        className={`cursor-pointer font-medium ${
                             activeSection === "home"
                                 ? "text-purple-700 font-extrabold"
                                 : "text-gray-600 hover:text-purple-700"
@@ -75,8 +85,8 @@ const CandidateHeader = () => {
                         Home
                     </a>
                     <a
-                        href="#upload-resume"
-                        className={`font-medium ${
+                        onClick={() => scrollToSection("upload-resume")}
+                        className={`cursor-pointer font-medium ${
                             activeSection === "upload-resume"
                                 ? "text-purple-700 font-bold"
                                 : "text-gray-600 hover:text-purple-700"
@@ -84,8 +94,8 @@ const CandidateHeader = () => {
                         Apply for a Job
                     </a>
                     <a
-                        href="#features"
-                        className={`font-medium ${
+                        onClick={() => scrollToSection("features")}
+                        className={`cursor-pointer font-medium ${
                             activeSection === "features"
                                 ? "text-purple-700 font-bold"
                                 : "text-gray-600 hover:text-purple-700"
@@ -93,8 +103,8 @@ const CandidateHeader = () => {
                         Features
                     </a>
                     <a
-                        href="#faqs"
-                        className={`font-medium ${
+                        onClick={() => scrollToSection("faqs")}
+                        className={`cursor-pointer font-medium ${
                             activeSection === "faqs"
                                 ? "text-purple-700 font-bold"
                                 : "text-gray-600 hover:text-purple-700"
@@ -102,15 +112,29 @@ const CandidateHeader = () => {
                         FAQs
                     </a>
                     <a
-                        href="#post_a_job"
-                        className={`font-medium ${
+                        onClick={() => scrollToSection("post_a_job")}
+                        className={`cursor-pointer font-medium ${
                             activeSection === "post_a_job"
                                 ? "text-purple-700"
                                 : "text-gray-600 hover:text-purple-700"
-                        }`}
-                        onClick={toggleMenu}>
+                        }`}>
                         Post a Job
                     </a>
+                    <div className="relative">
+                        <a
+                            onClick={() => scrollToSection("training-partner")}
+                            className={`cursor-pointer font-medium ${
+                                activeSection === "training-partner"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}>
+                            Our Training Partner
+                        </a>
+                        {/* Animated Badge */}
+                        <span className="absolute -top-3 -right-13 bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+                            NEW
+                        </span>
+                    </div>
                 </nav>
 
                 {/* Mobile Hamburger Menu */}
@@ -138,55 +162,67 @@ const CandidateHeader = () => {
                 <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
                     <nav className="flex flex-col items-center gap-4 py-4">
                         <a
-                            href="#home"
-                            className={`font-medium ${
+                            onClick={() => scrollToSection("home")}
+                            className={`cursor-pointer font-medium ${
                                 activeSection === "home"
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
-                            }`}
-                            onClick={toggleMenu}>
+                            }`}>
                             Home
                         </a>
                         <a
-                            href="#upload-resume"
-                            className={`font-medium ${
+                            onClick={() => scrollToSection("upload-resume")}
+                            className={`cursor-pointer font-medium ${
                                 activeSection === "upload-resume"
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
-                            }`}
-                            onClick={toggleMenu}>
+                            }`}>
                             Upload Resume
                         </a>
                         <a
-                            href="#features"
-                            className={`font-medium ${
+                            onClick={() => scrollToSection("features")}
+                            className={`cursor-pointer font-medium ${
                                 activeSection === "features"
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
-                            }`}
-                            onClick={toggleMenu}>
+                            }`}>
                             Features
                         </a>
                         <a
-                            href="#faqs"
-                            className={`font-medium ${
+                            onClick={() => scrollToSection("faqs")}
+                            className={`cursor-pointer font-medium ${
                                 activeSection === "faqs"
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
-                            }`}
-                            onClick={toggleMenu}>
+                            }`}>
                             FAQs
                         </a>
                         <a
-                            href="#post_a_job"
-                            className={`font-medium ${
+                            onClick={() => scrollToSection("post_a_job")}
+                            className={`cursor-pointer font-medium ${
                                 activeSection === "post_a_job"
                                     ? "text-purple-700"
                                     : "text-gray-600 hover:text-purple-700"
-                            }`}
-                            onClick={toggleMenu}>
+                            }`}>
                             Post a Job
                         </a>
+                        <div className="relative">
+                            <a
+                                onClick={() =>
+                                    scrollToSection("training-partner")
+                                }
+                                className={`cursor-pointer font-medium ${
+                                    activeSection === "training-partner"
+                                        ? "text-purple-700"
+                                        : "text-gray-600 hover:text-purple-700"
+                                }`}>
+                                Our Training Partner
+                            </a>
+                            {/* Animated Badge */}
+                            <span className="absolute -top-3 right-15 bg-pink-500 text-white text-xs font-bold px-2 py-1 rounded-full animate-bounce">
+                                NEW
+                            </span>
+                        </div>
                     </nav>
                 </div>
             )}
