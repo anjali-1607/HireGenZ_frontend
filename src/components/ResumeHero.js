@@ -208,7 +208,7 @@ const ResumeHero = () => {
                 <button
                     onClick={() => setIsModalOpen(true)}
                     className="inline-block lg:ml-8 mt-6 bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white font-semibold text-lg md:text-xl py-4 px-10 rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300">
-                    Transform Your Resume Now
+                    Analyze Your Resume
                 </button>
             </div>
 
