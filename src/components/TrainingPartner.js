@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaAward, FaChalkboardTeacher, FaArrowRight } from "react-icons/fa";
+import HzModal from "./HzModal";
 
 const TrainingPartner = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
     const sectionRef = useRef(null);
 
     useEffect(() => {
@@ -25,6 +27,11 @@ const TrainingPartner = () => {
             }
         };
     }, []);
+
+    // Function to toggle popup visibility
+    const togglePopup = () => {
+        setIsPopupOpen(!isPopupOpen);
+    };
 
     return (
         <div
@@ -80,14 +87,131 @@ const TrainingPartner = () => {
 
                 {/* Call-to-Action Section */}
                 <div className="text-center">
-                    <a
-                        href="#training"
+                    <button
+                        onClick={togglePopup}
                         className="inline-flex items-center bg-gradient-to-r from-purple-300 to-pink-300 text-gray-600 font-semibold text-lg py-4 px-8 rounded-lg shadow-lg hover:opacity-90 transform hover:scale-105 transition">
                         Explore Training Programs
                         <FaArrowRight className="ml-3" />
-                    </a>
+                    </button>
                 </div>
             </div>
+
+            {/* Popup Modal */}
+            {isPopupOpen && (
+                <HzModal className="w-[90%] md:w-[50%] h-auto relative flex flex-col items-center justify-center p-10 bg-white rounded-lg shadow-lg">
+                    <button
+                        onClick={togglePopup}
+                        className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-xl font-bold">
+                        &times;
+                    </button>
+                    <div className="text-center mb-6">
+                        <h3 className="text-2xl font-bold text-gray-800">
+                            Professional Training and Counseling in Indore
+                        </h3>
+                        <p className="text-gray-600 mt-4">
+                            If you're looking to take professional training or
+                            want to engage in one-to-one counseling, our offline
+                            programs in Indore are here for you. Partnering with{" "}
+                            <strong>Ultraxpert</strong>, we ensure you receive
+                            top-notch guidance and skills enhancement. Fill out
+                            the form below to get started on your journey with
+                            our expert team!
+                        </p>
+                    </div>
+
+                    <form className="w-full space-y-4">
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="name"
+                                className="text-sm font-semibold text-gray-700">
+                                Full Name
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your name"
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="email"
+                                className="text-sm font-semibold text-gray-700">
+                                Email Address
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your email"
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="phone"
+                                className="text-sm font-semibold text-gray-700">
+                                Phone Number
+                            </label>
+                            <input
+                                type="tel"
+                                id="phone"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your phone number"
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="college"
+                                className="text-sm font-semibold text-gray-700">
+                                College Name
+                            </label>
+                            <input
+                                type="text"
+                                id="college"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your college name"
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="course"
+                                className="text-sm font-semibold text-gray-700">
+                                Course
+                            </label>
+                            <input
+                                type="text"
+                                id="course"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your course"
+                                required
+                            />
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="branch"
+                                className="text-sm font-semibold text-gray-700">
+                                Branch
+                            </label>
+                            <input
+                                type="text"
+                                id="branch"
+                                className="border border-gray-300 rounded-lg py-2 px-4 mt-1 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                placeholder="Enter your branch"
+                                required
+                            />
+                        </div>
+                        <button
+                            type="submit"
+                            className="w-full bg-purple-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-purple-700 transition">
+                            Submit
+                        </button>
+                    </form>
+                </HzModal>
+            )}
         </div>
     );
 };
