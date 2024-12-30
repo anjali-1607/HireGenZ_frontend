@@ -159,7 +159,7 @@ const CandidateHeader = () => {
 
             {/* Mobile Menu */}
             {isMenuOpen && (
-                <div className="absolute top-16 left-0 w-full bg-white shadow-lg md:hidden">
+                <div className="absolute top-16 left-0 w-full bg-white shadow-lg ">
                     <nav className="flex flex-col items-center gap-4 py-4">
                         <a
                             onClick={() => scrollToSection("home")}

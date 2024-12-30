@@ -34,7 +34,7 @@ const Footer = () => {
                     ? "translate-y-0 opacity-100"
                     : "translate-y-10 opacity-0"
             }`}>
-            <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 md:px-8">
+            <div className="max-w-7xl mx-auto py-10 px-4 sm:px-6 md:px-8 ">
                 {/* Top Section */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center md:text-left">
                     {/* Company Info Section */}
@@ -79,7 +79,7 @@ const Footer = () => {
                     </div>
 
                     {/* Quick Links Section */}
-                    <div className="flex flex-col items-center md:items-start">
+                    <div className="flex flex-col items-center md:items-center lg:items-center">
                         <h3 className="text-md font-semibold text-gray-700 uppercase mb-4">
                             Quick Links
                         </h3>
@@ -103,7 +103,7 @@ const Footer = () => {
                     </div>
 
                     {/* Support Section */}
-                    <div className="flex flex-col items-center md:items-start">
+                    <div className="flex flex-col items-center md:items-center lg:items-center">
                         <h3 className="text-md font-semibold text-gray-700 uppercase mb-4">
                             Support
                         </h3>
