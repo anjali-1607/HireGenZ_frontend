@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/hiregenzo-logo-final.png";
 
 const CandidateHeader = () => {
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage mobile menu visibility
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // State to manage menu visibility
     const [isScrolled, setIsScrolled] = useState(false); // State to track if the header should have a white background
     const [activeSection, setActiveSection] = useState("home"); // State to track the active section
 
@@ -74,7 +74,7 @@ const CandidateHeader = () => {
                 </Link>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex gap-8 ml-auto lg:mr-20">
+                <nav className="hidden lg:flex gap-8 ml-auto lg:mr-20">
                     <a
                         onClick={() => scrollToSection("home")}
                         className={`cursor-pointer font-medium ${
@@ -137,9 +137,9 @@ const CandidateHeader = () => {
                     </div>
                 </nav>
 
-                {/* Mobile Hamburger Menu */}
+                {/* Mobile & Tablet Hamburger Menu */}
                 <button
-                    className="block md:hidden text-purple-700 ml-auto"
+                    className="block lg:hidden text-purple-700 ml-auto"
                     onClick={toggleMenu}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -157,9 +157,9 @@ const CandidateHeader = () => {
                 </button>
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile & Tablet Menu */}
             {isMenuOpen && (
-                <div className="absolute top-16 left-0 w-full bg-white shadow-lg ">
+                <div className="absolute top-16 left-0 w-full bg-white shadow-lg">
                     <nav className="flex flex-col items-center gap-4 py-4">
                         <a
                             onClick={() => scrollToSection("home")}
