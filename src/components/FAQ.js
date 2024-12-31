@@ -70,7 +70,7 @@ const FAQs = () => {
         <div
             ref={sectionRef}
             id="faqs"
-            className="py-16 px-6 md:px-16 relative bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100">
+            className="py-16 px-6 md:px-16 relative">
             <div className="max-w-4xl mx-auto">
                 {/* Heading and Question Mark */}
                 <div className="flex items-center mb-8">
