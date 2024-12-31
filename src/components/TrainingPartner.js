@@ -87,7 +87,7 @@ const TrainingPartner = () => {
                         you’re job-ready with tailored, hands-on training
                         programs.
                     </p>
-                    <div className="flex flex-col md:flex-row lg:items-center space-y-4 md:space-y-0 md:space-x-6 md:items-center">
+                    <div className="flex flex-col md:flex-row lg:items-center space-y-4 md:space-y-0 md:space-x-6 md:items-center sm:items-center">
                         <div className="flex items-center space-x-3">
                             <div className="p-3 bg-purple-100 rounded-full">
                                 <FaChalkboardTeacher className="text-purple-600 w-6 h-6" />

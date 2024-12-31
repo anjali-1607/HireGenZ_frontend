@@ -32,7 +32,7 @@ const CandidatePage = () => {
             <CandidateFeatures />
             <Testimonials />
             <FAQs />
-            <RecruitersSection />
+            {/* <RecruitersSection /> */}
             <TrainingPartner />
             <Footer />
         </div>
