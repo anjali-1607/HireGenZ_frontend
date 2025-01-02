@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { FaCode, FaBullhorn, FaPaintBrush, FaHeadset } from "react-icons/fa";
 
 const Categories = () => {
@@ -29,8 +29,39 @@ const Categories = () => {
         },
     ];
 
+    const [visibleIndexes, setVisibleIndexes] = useState([]);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const index = Number(
+                            entry.target.getAttribute("data-index")
+                        );
+                        setVisibleIndexes((prev) => [
+                            ...new Set([...prev, index]),
+                        ]);
+                    }
+                });
+            },
+            { threshold: 0.3 } // Trigger animation when 30% of the card is visible
+        );
+
+        const categoryElements =
+            sectionRef.current.querySelectorAll("[data-index]");
+        categoryElements.forEach((element) => observer.observe(element));
+
+        return () => {
+            categoryElements.forEach((element) => observer.unobserve(element));
+        };
+    }, []);
+
     return (
-        <section className="py-16 bg-gradient-to-br from-purple-100 to-pink-100 lg:px-36 md:px-0">
+        <section
+            ref={sectionRef}
+            className="py-16 bg-gradient-to-br from-purple-100 to-pink-100 lg:px-36 md:px-0">
             <h2 className="text-2xl font-bold text-center text-gray-800">
                 Popular Categories
             </h2>
@@ -38,7 +69,14 @@ const Categories = () => {
                 {categories.map((category, index) => (
                     <div
                         key={index}
-                        className="flex flex-col items-center text-center bg-white border rounded-lg shadow-md p-6">
+                        data-index={index}
+                        className={`flex flex-col items-center text-center bg-white border rounded-lg shadow-md p-6 transition-all duration-1000 ease-out ${
+                            visibleIndexes.includes(index)
+                                ? "opacity-100 translate-y-0"
+                                : "opacity-0 translate-y-10"
+                        }`}
+                        style={{ transitionDelay: `${index * 200}ms` }} // Staggered animation
+                    >
                         {/* Circular Icon */}
                         <div className="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-white to-pink-100 rounded-full mb-4">
                             {category.icon}

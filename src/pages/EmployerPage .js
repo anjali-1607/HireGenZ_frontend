@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
@@ -8,6 +8,10 @@ import EmployerAndCandidateCards from "../components/EmployerAndCandidateCards "
 import AdvancedFeatures from "../components/AdvancedFeatures";
 
 const EmployerPage = () => {
+    useEffect(() => {
+        // Scroll to the top when the component is mounted
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <div>
             <Header />
