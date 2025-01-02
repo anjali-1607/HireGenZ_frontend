@@ -30,7 +30,7 @@ const Categories = () => {
     ];
 
     return (
-        <section className="py-16 bg-purple-100 lg:px-36 md:px-0">
+        <section className="py-16 bg-gradient-to-br from-purple-100 to-pink-100 lg:px-36 md:px-0">
             <h2 className="text-2xl font-bold text-center text-gray-800">
                 Popular Categories
             </h2>
@@ -40,7 +40,7 @@ const Categories = () => {
                         key={index}
                         className="flex flex-col items-center text-center bg-white border rounded-lg shadow-md p-6">
                         {/* Circular Icon */}
-                        <div className="w-20 h-20 flex items-center justify-center bg-purple-100 rounded-full mb-4">
+                        <div className="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-white to-pink-100 rounded-full mb-4">
                             {category.icon}
                         </div>
                         {/* Category Name */}

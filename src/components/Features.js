@@ -24,9 +24,9 @@ const Features = () => {
             {features.map((feature, index) => (
                 <div
                     key={index}
-                    className="relative p-6 border rounded-lg shadow-md bg-white">
+                    className="relative p-6 border rounded-lg  bg-gradient-to-br from-white to-purple-50">
                     {/* Circle with Number */}
-                    <div className="absolute -top-4 left-4 w-10 h-10 bg-purple-700 text-white font-bold flex items-center justify-center rounded-full">
+                    <div className="absolute -top-4 left-4 w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-400 text-white font-bold flex items-center justify-center rounded-full">
                         {index + 1}
                     </div>
                     <h3 className="mt-8 text-xl font-semibold text-purple-700">

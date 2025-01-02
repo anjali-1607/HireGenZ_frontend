@@ -5,13 +5,15 @@ import { useNavigate } from "react-router-dom";
 const Hero = () => {
     const navigate = useNavigate();
     return (
-        <section className="flex flex-col md:flex-row items-center text-center md:text-left py-16 bg-purple-100 px-8">
+        <section className="flex flex-col md:flex-row items-center text-center md:text-left py-16 px-8 bg-gradient-to-br from-purple-50 to-purple-100">
             {/* Left Content */}
             <div className="md:w-1/2 lg:ml-20">
                 <h1 className="text-5xl font-bold text-gray-800">
                     Discover Top Talent in{" "}
-                    <span className="text-purple-700">Minutes</span>, Not in
-                    Weeks.
+                    <span className="bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] text-transparent bg-clip-text">
+                        Minutes
+                    </span>
+                    , Not in Weeks.
                 </h1>
                 <p className="mt-4 text-gray-600 text-lg lg:text-xl">
                     Upload your job description, and let HiregenZo match you
@@ -19,7 +21,7 @@ const Hero = () => {
                 </p>
                 <button
                     onClick={() => navigate("/recruiters/job-description")}
-                    className="mt-8 px-6 py-3 bg-purple-700 text-white rounded-lg">
+                    className="mt-8 px-6 py-3 bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white  text-lg md:text-lg  rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300">
                     Create a Job
                 </button>
             </div>

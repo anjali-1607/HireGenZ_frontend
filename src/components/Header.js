@@ -66,7 +66,7 @@ const Header = () => {
 
                     {/* Desktop Login Button */}
                     <button
-                        className="hidden md:block px-4 py-2 bg-purple-700 text-white rounded-lg"
+                        className="hidden md:block px-4 py-2  bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white text-md md:text-md rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300"
                         onClick={() => navigate("/recruiters/login")}>
                         Login
                     </button>
@@ -108,7 +108,7 @@ const Header = () => {
                                 Find CVs
                             </a>
                             <button
-                                className="px-4 py-2 bg-purple-700 text-white rounded-lg"
+                                className="px-4 py-2  bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white text-md md:text-md rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300"
                                 onClick={() => {
                                     navigate("/recruiters/login");
                                 }}>

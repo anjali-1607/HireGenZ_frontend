@@ -27,7 +27,7 @@ const AdvancedFeatures = () => {
                     can quickly identify top candidates and ensure the perfect
                     fit for your team.
                 </p>
-                <button className="mt-8 px-6 py-3 bg-purple-700 text-white rounded-lg">
+                <button className="mt-8 px-6 py-3  bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white text-md md:text-md rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300">
                     Get started now
                 </button>
             </div>

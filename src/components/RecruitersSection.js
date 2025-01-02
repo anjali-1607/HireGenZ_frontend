@@ -32,7 +32,7 @@ const RecruitersSection = () => {
         <div
             ref={sectionRef}
             id="post_a_job"
-            className="bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100 py-16 px-6 md:px-16">
+            className="bg-gradient-to-br from-purple-50 via-purple-100 to-pink-100 py-16 px-6 md:px-16 overflow-hidden">
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center">
                 {/* Image Section */}
                 <div
