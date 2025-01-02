@@ -11,7 +11,7 @@ const FAQs = () => {
         {
             id: 1,
             question: "What happens after I upload my resume?",
-            answer: "Once your resume is uploaded, HireGeni’s AI scans it to match your skills and experience with available job descriptions. You’ll receive an email update about the status of your application.",
+            answer: "Once your resume is uploaded, HireGenzo AI scans it to match your skills and experience with available job descriptions. You’ll receive an email update about the status of your application.",
         },
         {
             id: 2,
@@ -26,7 +26,7 @@ const FAQs = () => {
         {
             id: 4,
             question: "Is the platform free for job seekers?",
-            answer: "Yes, uploading your resume and applying for jobs on HireGeni is completely free for job seekers.",
+            answer: "Yes, uploading your resume and applying for jobs on HireGenzo is completely free for job seekers.",
         },
         {
             id: 5,
@@ -36,7 +36,7 @@ const FAQs = () => {
         {
             id: 6,
             question: "Will I get a job guarantee after passing the test?",
-            answer: "While passing the test increases your chances of getting hired, final decisions depend on the hiring company. HireGeni connects you directly with employers for the next steps.",
+            answer: "While passing the test increases your chances of getting hired, final decisions depend on the hiring company. HireGenzo connects you directly with employers for the next steps.",
         },
     ];
 

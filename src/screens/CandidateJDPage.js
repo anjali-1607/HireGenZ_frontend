@@ -49,7 +49,7 @@ const CandidateJDPage = () => {
             {/* Header */}
             <header className="text-black p-4 border-b-2 border-gray-200">
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
-                    <img src={logo} alt="HireGeni Logo" className="h-8" />
+                    <img src={logo} alt="HireGenZo Logo" className="h-8" />
                     <button
                         className="text-md font-medium text-white px-8 py-2 rounded-lg hover:bg-purple-700 bg-purple-600 flex items-center"
                         onClick={() => navigate("/test")}>

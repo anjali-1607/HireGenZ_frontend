@@ -15,7 +15,7 @@ const Features = () => {
         {
             title: "Post your job",
             description:
-                "Let HireGeni's advanced AI match you with top-tier talent in no time.",
+                "Let HiregenZo advanced AI match you with top-tier talent in no time.",
         },
     ];
 

@@ -14,8 +14,8 @@ const Hero = () => {
                     Weeks.
                 </h1>
                 <p className="mt-4 text-gray-600 text-lg lg:text-xl">
-                    Upload your job description, and let HireGeni match you with
-                    top candidates today!
+                    Upload your job description, and let HiregenZo match you
+                    with top candidates today!
                 </p>
                 <button
                     onClick={() => navigate("/recruiters/job-description")}

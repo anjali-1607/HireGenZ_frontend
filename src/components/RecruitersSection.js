@@ -59,10 +59,10 @@ const RecruitersSection = () => {
                         Recruiters: Find Your Perfect Hire
                     </h2>
                     <h3 className="text-lg font-medium mb-6">
-                        Post a Job in Minutes and Let HireGeni Do the Rest
+                        Post a Job in Minutes and Let HiregenZo Do the Rest
                     </h3>
                     <p className="text-gray-700 mb-6">
-                        Looking for the right talent for your team? HireGeni
+                        Looking for the right talent for your team? HiregenZo
                         makes hiring quick and efficient with our AI-powered job
                         matching platform. Whether you’re hiring for one role or
                         many, our tools help you connect with top-tier

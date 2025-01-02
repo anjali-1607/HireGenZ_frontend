@@ -5,7 +5,7 @@ const DreamJobSteps = () => {
         {
             title: "Upload Your Resume with Ease",
             description:
-                "Submit your resume effortlessly on HireGeni’s platform. Our intelligent AI analyzes your profile to match you with jobs tailored to your skills, experience, and career goals.",
+                "Submit your resume effortlessly on HireGenzo platform. Our intelligent AI analyzes your profile to match you with jobs tailored to your skills, experience, and career goals.",
         },
         {
             title: "Receive Instant Updates",
@@ -20,7 +20,7 @@ const DreamJobSteps = () => {
         {
             title: "Get Noticed and Hired",
             description:
-                "Impress employers with your verified skills and let HireGeni do the rest. If successful, you’ll receive a call directly from the company to finalize the hiring process.",
+                "Impress employers with your verified skills and let Hiregenzo do the rest. If successful, you’ll receive a call directly from the company to finalize the hiring process.",
         },
     ];
 

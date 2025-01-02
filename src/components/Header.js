@@ -42,7 +42,7 @@ const Header = () => {
                     {/* Logo */}
                     {/* <img src={logo} alt="HireGeni Logo" className="h-6" /> */}
                     <Link to="/recruiters">
-                        <img src={logo} alt="HireGeni Logo" className="h-8" />
+                        <img src={logo} alt="HireGenZo Logo" className="h-8" />
                     </Link>
 
                     {/* Desktop Navigation */}
