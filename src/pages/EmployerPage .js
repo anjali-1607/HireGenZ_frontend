@@ -6,6 +6,7 @@ import Categories from "../components/Categories";
 import Footer from "../components/Footer";
 import EmployerAndCandidateCards from "../components/EmployerAndCandidateCards ";
 import AdvancedFeatures from "../components/AdvancedFeatures";
+import ContactForm from "../components/ContactForm";
 
 const EmployerPage = () => {
     useEffect(() => {
@@ -20,6 +21,7 @@ const EmployerPage = () => {
             <EmployerAndCandidateCards />
             <Categories />
             <AdvancedFeatures />
+            <ContactForm />
             <Footer />
         </div>
     );
