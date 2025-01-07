@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../assets/hiregenzo-logo-final.png";
+import ContactForm from "./ContactForm";
 
 const Footer = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -101,6 +102,11 @@ const Footer = () => {
                             </li>
                         </ul>
                     </div>
+
+                    {/* Contact Form Section */}
+                    {/* <div className="flex flex-col items-center md:items-center lg:items-center">
+                        <ContactForm /> 
+                    </div> */}
 
                     {/* Support Section */}
                     <div className="flex flex-col items-center md:items-center lg:items-center">

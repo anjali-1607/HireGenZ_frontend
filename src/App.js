@@ -18,6 +18,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 import GetCandidates from "./pages/recuiters/GetCandidates";
 import CandidateJDPage from "./screens/CandidateJDPage";
 import MCQTestPage from "./screens/MCQTestPage";
+import Chatbot from "./components/Chatbot";
 
 // import CandidatePage from "./pages/CandidatePage"; // The page for "/"
 // import EmployerPage from "./pages/EmployerPage"; // The page for "/post-job"
@@ -61,6 +62,7 @@ const App = () => {
                     />
                     <Route path="/test" element={<MCQTestPage />} />
                 </Routes>
+                <Chatbot />
             </Router>
         </QueryClientProvider>
     );

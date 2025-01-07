@@ -3,6 +3,10 @@ module.exports = {
     content: ["./src/**/*.{js,jsx,ts,tsx}"],
     theme: {
         extend: {
+            screens: {
+                // Define a custom range for 1024px to 1670px
+                "1024-1870": { min: "1024px", max: "1870px" },
+            },
             animation: {
                 slideInLeft: "slideInLeft 1s ease-out",
                 slideInRight: "slideInRight 1s ease-out",

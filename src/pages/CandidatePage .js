@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import ResumeHero from "../components/ResumeHero";
 import Carousel from "../components/Carousel";
 import TrainingPartner from "../components/TrainingPartner";
+import ContactForm from "../components/ContactForm";
 // import CandidateHeader from "../components/CandidateHeader";
 // import CandidateHero from "../components/CandidateHero";
 // import CandidateFeatures from "../components/CandidateFeatures";
@@ -34,6 +35,7 @@ const CandidatePage = () => {
             <FAQs />
             <RecruitersSection />
             <TrainingPartner />
+            <ContactForm />
             <Footer />
         </div>
     );
