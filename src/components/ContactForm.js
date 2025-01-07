@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import contactImg from "../assets/contactform.webp";
+import contactImg from "../assets/contactform.png";
 
 const ContactForm = () => {
     const form = useRef();
+    const sectionRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
     const [formData, setFormData] = useState({
         from_name: "",
         from_email: "",
@@ -19,6 +22,28 @@ const ContactForm = () => {
         success: null,
         error: null,
     });
+
+    useEffect(() => {
+        // Intersection Observer to detect visibility
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            { threshold: 0.3 } // Trigger animation when 30% of the component is visible
+        );
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
 
     useEffect(() => {
         // Check localStorage for submission timestamp
@@ -60,7 +85,13 @@ const ContactForm = () => {
                     success: "Message sent successfully!",
                     error: null,
                 });
-                setFormData({ from_name: "", from_email: "", message: "" });
+                setFormData({
+                    from_name: "",
+                    from_email: "",
+                    message: "",
+                    phone: "",
+                    subject: "",
+                });
                 setIsSubmitted(true); // Hide form and show thank you message
 
                 // Store submission timestamp in localStorage
@@ -79,11 +110,23 @@ const ContactForm = () => {
             }
         );
     };
+
     return (
-        <div className="bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center px-4 sm:px-6 lg:px-72 py-10 1024-1870:px-20">
+        <div
+            ref={sectionRef}
+            className={`bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center px-4 sm:px-6 lg:px-72 py-10 1024-1870:px-20 transition-all duration-1000 ${
+                isVisible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-10"
+            }`}>
             <div className="rounded-2xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 p-10 lg:gap-24">
                 {/* Left Section - Form */}
-                <div className="">
+                <div
+                    className={`transition-all duration-1000 ${
+                        isVisible
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 -translate-x-10"
+                    }`}>
                     <h2 className="text-4xl font-bold text-gray-800 mb-6">
                         Contact Us
                     </h2>
@@ -236,7 +279,12 @@ const ContactForm = () => {
                 </div>
 
                 {/* Right Section - Contact Details + Illustration */}
-                <div className="space-y-6 flex flex-col justify-center">
+                <div
+                    className={`space-y-6 flex flex-col justify-center transition-all duration-1000 ${
+                        isVisible
+                            ? "opacity-100 translate-x-0"
+                            : "opacity-0 translate-x-10"
+                    }`}>
                     <img
                         src={contactImg}
                         alt="Contact Illustration"
