@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaAward, FaChalkboardTeacher, FaArrowRight } from "react-icons/fa";
 import HzModal from "./HzModal";
+import { useNavigate } from "react-router-dom";
 
 const TrainingPartner = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -9,6 +10,7 @@ const TrainingPartner = () => {
     const [otpSubmitted, setOtpSubmitted] = useState(false);
     const [otp, setOtp] = useState("");
     const sectionRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -110,10 +112,12 @@ const TrainingPartner = () => {
                 {/* Call-to-Action Section */}
                 <div className="text-center">
                     <button
-                        onClick={togglePopup}
+                        onClick={() => {
+                            window.open("https://ultraxpert.in/", "_blank");
+                        }}
                         className="inline-flex items-center bg-gradient-to-r from-purple-300 to-pink-300 text-gray-600 font-semibold text-lg py-4 px-8 rounded-lg shadow-lg hover:opacity-90 transform hover:scale-105 transition">
-                        {/* Explore Training Programs */}
-                        Coming Soon....
+                        Explore Training Programs
+                        {/* Coming Soon.... */}
                         <FaArrowRight className="ml-3" />
                     </button>
                 </div>

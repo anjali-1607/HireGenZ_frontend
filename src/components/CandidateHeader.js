@@ -37,6 +37,7 @@ const CandidateHeader = () => {
                 "faqs",
                 "post_a_job",
                 "training-partner",
+                "contact-us",
             ];
             const offsets = sections.map((id) => {
                 const element = document.getElementById(id);
@@ -135,6 +136,15 @@ const CandidateHeader = () => {
                             NEW
                         </span>
                     </div>
+                    {/* <a
+                        onClick={() => scrollToSection("contact-us")}
+                        className={`cursor-pointer font-medium ml-5  ${
+                            activeSection === "post_a_job"
+                                ? "text-purple-700"
+                                : "text-gray-600 hover:text-purple-700"
+                        }`}>
+                        Contact Us
+                    </a> */}
                 </nav>
 
                 {/* Mobile & Tablet Hamburger Menu */}
@@ -223,6 +233,15 @@ const CandidateHeader = () => {
                                 NEW
                             </span>
                         </div>
+                        <a
+                            onClick={() => scrollToSection("contact-us")}
+                            className={`cursor-pointer font-medium ${
+                                activeSection === "post_a_job"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}>
+                            Contact Us
+                        </a>
                     </nav>
                 </div>
             )}

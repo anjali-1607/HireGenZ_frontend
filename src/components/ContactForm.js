@@ -113,8 +113,9 @@ const ContactForm = () => {
 
     return (
         <div
+            id="contact-us"
             ref={sectionRef}
-            className={`bg-gradient-to-br from-purple-100 to-pink-100 flex items-center justify-center px-4 sm:px-6 lg:px-72 py-10 1024-1870:px-20 transition-all duration-1000 ${
+            className={`bg-gradient-to-br from-white via-purple-200 to-pink-200 flex items-center justify-center px-4 sm:px-6 lg:px-72 py-10 1024-1870:px-20 transition-all duration-1000 ${
                 isVisible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/hiregenzo-logo-final.png"; // Adjust the path based on your folder structure
 import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("home");
     // const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
     // const [isRegistrationPopupOpen, setIsRegistrationPopupOpen] =
     //     useState(false);
@@ -34,6 +35,34 @@ const Header = () => {
     //     setIsRegistrationPopupOpen(false); // Close registration popup after submission
     // };
 
+    useEffect(() => {
+        const handleScroll = () => {
+            // Update active section based on scroll position
+            const sections = ["home", "contact-us"];
+            const offsets = sections.map((id) => {
+                const element = document.getElementById(id);
+                return element ? element.offsetTop : 0;
+            });
+
+            const scrollPosition = window.scrollY + window.innerHeight / 2;
+            for (let i = 0; i < sections.length; i++) {
+                if (
+                    scrollPosition >= offsets[i] &&
+                    (i === sections.length - 1 ||
+                        scrollPosition < offsets[i + 1])
+                ) {
+                    setActiveSection(sections[i]);
+                    break;
+                }
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
         <>
             {/* Header Section */}
@@ -61,6 +90,15 @@ const Header = () => {
                             href="/"
                             className="text-gray-600 hover:text-purple-700">
                             Jobseeker
+                        </a>
+                        <a
+                            href="#contact-us"
+                            className={`cursor-pointer font-medium ${
+                                activeSection === "post_a_job"
+                                    ? "text-purple-700"
+                                    : "text-gray-600 hover:text-purple-700"
+                            }`}>
+                            Contact Us
                         </a>
                     </nav>
 
@@ -106,6 +144,15 @@ const Header = () => {
                                 className="text-gray-600 hover:text-purple-700"
                                 onClick={() => setIsMenuOpen(false)}>
                                 Jobseeker
+                            </a>
+                            <a
+                                href="#contact-us"
+                                className={`cursor-pointer font-medium ${
+                                    activeSection === "post_a_job"
+                                        ? "text-purple-700"
+                                        : "text-gray-600 hover:text-purple-700"
+                                }`}>
+                                Contact Us
                             </a>
                             <button
                                 className="px-4 py-2  bg-gradient-to-r from-[#bd76fa] to-[#ee89b7] hover:opacity-90 hover:scale-105 text-white text-md md:text-md rounded-lg shadow-lg transition-transform transform animate-fadeIn delay-300"

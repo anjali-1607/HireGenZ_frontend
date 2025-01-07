@@ -70,7 +70,8 @@ const Footer = () => {
                                     <i className="fab fa-twitter"></i>
                                 </a>
                                 <a
-                                    href="#linkedin"
+                                    href="https://www.linkedin.com/company/hiregenzo/?viewAsMember=true"
+                                    target="_blank"
                                     className="text-gray-600 hover:text-gray-800"
                                     aria-label="LinkedIn">
                                     <i className="fab fa-linkedin"></i>
@@ -91,12 +92,17 @@ const Footer = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="#product" className="hover:underline">
+                                <a
+                                    href="https://ultraxpert.in/"
+                                    target="_blank"
+                                    className="hover:underline">
                                     Product
                                 </a>
                             </li>
                             <li>
-                                <a href="#careers" className="hover:underline">
+                                <a
+                                    href="#contact-us"
+                                    className="hover:underline">
                                     Careers
                                 </a>
                             </li>
@@ -115,12 +121,14 @@ const Footer = () => {
                         </h3>
                         <ul className="space-y-2 text-md">
                             <li>
-                                <a href="#company" className="hover:underline">
+                                <a href="#home" className="hover:underline">
                                     Company
                                 </a>
                             </li>
                             <li>
-                                <a href="#contact" className="hover:underline">
+                                <a
+                                    href="#contact-us"
+                                    className="hover:underline">
                                     Contact Us
                                 </a>
                             </li>
@@ -133,7 +141,7 @@ const Footer = () => {
             <div className="border-t border-gray-300 py-6">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 flex flex-col items-center">
                     <p className="text-md text-center">
-                        © 2024 HireGenZo. All rights reserved.
+                        © 2025 HireGenZo. All rights reserved.
                     </p>
                 </div>
             </div>
